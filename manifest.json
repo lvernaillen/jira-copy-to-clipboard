@@ -24,7 +24,6 @@
       ],
       "js": [
         "scripts/storage-utils.js",
-        "scripts/settings.js",
         "scripts/copybtn.js"
       ],
       "run_at": "document_start",
