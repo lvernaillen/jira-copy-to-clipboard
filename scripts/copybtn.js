@@ -33,7 +33,7 @@ function getIssueDataAndWriteToClipboard(issueId)
     const issueUrl = `${window.location.origin}/browse/${issueId}`;
 
     storageGet('format').then(function (storageData) {
-      const format = storageData.format || '[{key}] {title}';
+      const format = storageData.format || '{key}: {title}';
       const outputText = format
         .replaceAll('{key}', issueKey)
         .replaceAll('{title}', issueTitle)
