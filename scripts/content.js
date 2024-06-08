@@ -45,7 +45,23 @@ function getIssueDataAndWriteToClipboard(issueId)
         .replaceAll('{assignee}', issueAssignee)
         .replaceAll('{url}', issueUrl)
       
-        navigator.clipboard.writeText(outputText);
+      // .replaceAll('{linkStart}', `<a href="${issueUrl}">`)
+      // .replaceAll('{linkEnd}', '</a>')
+      
+      navigator.clipboard.writeText(outputText);
+      // check if both linkStart and linkEnd are present
+      // if so add the anchor tag
+      // TODO: make '{linkStart}{key}{linkEnd}: {title}' the default if no format available
+      const outputHtml = `<a href="${issueUrl}">${issueKey}</a>: ${outputText}`
+
+      navigator.clipboard.write([
+        new ClipboardItem({
+          "text/plain": new Blob([outputText], { type: "text/plain" }),
+          "text/html": new Blob([outputHtml], { type: "text/html" })
+        })
+      ])
+      // navigator.clipboard.writeText(outputText);
+
     });
   });
 }
