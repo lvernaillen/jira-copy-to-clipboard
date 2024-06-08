@@ -1,16 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Jira Snippet",
-  "version": "2.1",
-  "description": "Jira Snippet is a browser extension that streamlines your Jira experience by allowing you to quickly copy issue information in a customizable format. It's easy to configure and enables you to choose what data you want to include when copying, such as issue title, ID, status, and more. The add-on integrates seamlessly with both Jira Cloud and Server and is compatible with Chrome, Firefox, Edge and Opera browsers.",
-  "homepage_url": "https://github.com/daemonLibra/JiraIssueCopyData",
-  "author": "https://github.com/daemonLibra",
+  "name": "Jira Copy to Clipboard",
+  "version": "1.0",
+  "description": "Copy Jira issue information to clipboard in a customizable format.",
+  "homepage_url": "https://github.com/lvernaillen/jira-copy-to-clipboard",
+  "author": "https://github.com/lvernaillen/",
   "icons": {
     "48": "icons/logo-48.png"
   },
   "action": {
     "default_icon": "icons/logo-32.png",
-    "default_title": "Jira Snippet",
+    "default_title": "Jira Copy to Clipboard",
     "default_popup": "popup/info.html"
   },
   "options_page": "settings/settings.html",

@@ -1,4 +1,4 @@
-const contextMenuId = "jira-snippet";
+const contextMenuId = "jira-copy-to-clipboard";
 
 // Function to create the context menu
 // Callback reads runtime.lastError to prevent an unchecked error from being 
@@ -12,13 +12,13 @@ function createContextMenu() {
 
     chrome.contextMenus.create({
         id: contextMenuId,
-        title: "Copy IssueId and Title to Clipboard",
+        title: "Jira Copy to Clipboard",
         contexts: ["link"],
     }, function() {
       if (chrome.runtime.lastError) {
-        console.error(`Error creating context menu: ${chrome.runtime.lastError.message}`);
+        console.error(`Error creating Jira Copy to Clipboard context menu: ${chrome.runtime.lastError.message}`);
       } else {
-        console.log("Context menu created successfully.");
+        console.log("Jira Copy to Clipboard context menu created successfully.");
       }
     });
   });
@@ -27,11 +27,10 @@ function createContextMenu() {
 createContextMenu();
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-if (info.menuItemId === "jira-snippet") {
+if (info.menuItemId === contextMenuId) {
     if(info.linkUrl.includes("/browse/"))
     {
         let issueId = info.linkUrl.split("/browse/")[1];
-
         chrome.tabs.sendMessage(tab.id, {issueId: issueId});
     }
 }

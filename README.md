@@ -1,9 +1,17 @@
-# Copy Jira Issue Id and the Title with one click!
+# Jira Copy to Clipboard
 
-<p align="center">
-  <img src="./icons/logo-banner.png">
-</p>
+A simple Chrome extension that allows "Copy to clipboard" functionality in Jira Cloud. Quickly copy the issue id + title to the clipboard. You can configure which fields exactly get copied.
 
-Makes it possible to copy the jira issue id + title with one button
+Forked from [Jira-Snippet](https://github.com/daemonLibra/Jira-Snippet).
 
-Jira Snippet is a browser extension that streamlines your Jira experience by allowing you to quickly copy issue information in a customizable format. It's easy to configure and enables you to choose what data you want to include when copying, such as issue title, ID, status, and more. The add-on integrates seamlessly with both Jira Cloud and Server and is compatible with Chrome, Firefox, Edge and Opera browsers.
+## Current features
+- "Copy to clipboard" button on issue screen, issue popup screen and issue sidebar screen.
+- Copy any issue linked on the screen to the clipboard using the context menu of the link. No need to open it first.
+- Configure which fields get copied to the clipboard and in what format.
+- Matches the Jira Cloud quick add button style.
+- Supports dark mode.
+
+## Images
+
+## Copy format examples
+
