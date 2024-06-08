@@ -1,16 +1,24 @@
 chrome.runtime.onMessage.addListener(notify);
 
-function getIssueId() {
+function notify(message)
+{
+  getIssueDataAndWriteToClipboard(message.issueKey);
+}
+
+function getIssueKey() {
   const searchParam = "selectedIssue=";
   let issueKey;
+  let match;
 
   if (document.URL.includes(searchParam)) {
-    let match = document.URL.match(/[\?&]selectedIssue=(.*?)(?=&|$)/)[1];
-    issueKey = match;
+    match = document.URL.match(/[\?&]selectedIssue=(.*?)(?=&|$)/);
   } else {
-    let match = document.title.match(/\[(.*?)\]/)[1];
-    issueKey = match;
+    match = document.title.match(/\[(.*?)\]/);
   }
+
+  if (match !== null) {
+    issueKey = match[1];
+  } 
 
   return issueKey;
 }
@@ -66,11 +74,6 @@ function getIssueDataAndWriteToClipboard(issueId)
   });
 }
 
-function notify(message)
-{
-  getIssueDataAndWriteToClipboard(message.issueId);
-}
-
 function createButton(parent) {
   const buttonIconSpan = document.createElement("span");
   buttonIconSpan.classList.add("css-1uc6u2g")
@@ -108,15 +111,18 @@ function createButton(parent) {
   parent.appendChild(div);
   
   button.onclick = function () {
-        const issueId = getIssueId();
-        if(issueId == null) {
-          buttonTextSpan.textContent = 'Error: No Issue id found!';
-        }
-        getIssueDataAndWriteToClipboard(issueId);
-        buttonTextSpan.textContent = 'Text has been copied!';
-        setTimeout(function () {
-          buttonTextSpan.textContent = buttonText;
-        }, 2000);
+    const issueId = getIssueKey();
+    if(!!issueId) {
+      getIssueDataAndWriteToClipboard(issueId);
+      buttonTextSpan.textContent = 'Copied!';
+    }
+    else
+    {
+      buttonTextSpan.textContent = 'Error: No issue key found!';
+    }
+    setTimeout(function () {
+      buttonTextSpan.textContent = buttonText;
+    }, 2000);
   };
 }
 

@@ -30,8 +30,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 if (info.menuItemId === contextMenuId) {
     if(info.linkUrl.includes("/browse/"))
     {
-        let issueId = info.linkUrl.split("/browse/")[1];
-        chrome.tabs.sendMessage(tab.id, {issueId: issueId});
+        let issueKey = info.linkUrl.split("/browse/")[1];
+        chrome.tabs.sendMessage(tab.id, {issueKey});
     }
 }
 });
