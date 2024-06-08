@@ -6,16 +6,16 @@
   "homepage_url": "https://github.com/daemonLibra/JiraIssueCopyData",
   "author": "https://github.com/daemonLibra",
   "icons": {
-    "48": "icons/logo_48.png"
+    "48": "icons/logo-48.png"
   },
   "action": {
-    "default_icon": "icons/logo_32.png",
+    "default_icon": "icons/logo-32.png",
     "default_title": "Jira Snippet",
     "default_popup": "popup/info.html"
   },
   "options_page": "settings/settings.html",
   "background": {
-    "service_worker": "scripts/contextMenu.js"
+    "service_worker": "scripts/context-menu.js"
   },
   "content_scripts": [
     {
@@ -25,7 +25,7 @@
       ],
       "js": [
         "scripts/storage-utils.js",
-        "scripts/copybtn.js"
+        "scripts/content.js"
       ],
       "run_at": "document_start",
       "css": [

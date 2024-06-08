@@ -1,7 +1,7 @@
 # Copy Jira Issue Id and the Title with one click!
 
 <p align="center">
-  <img src="./icons/logo_banner.png">
+  <img src="./icons/logo-banner.png">
 </p>
 
 Makes it possible to copy the jira issue id + title with one button
