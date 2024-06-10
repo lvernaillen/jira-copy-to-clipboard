@@ -23,6 +23,33 @@ function getIssueKey() {
   return issueKey;
 }
 
+function formatData(data, format){
+  const issueKey = data['key'];
+  const issueTitle = data['fields']['summary'];
+  const issueDescription = data['fields']['description'];
+  const issueType = data['fields']['issuetype'].name;
+  const issuePriority = data['fields']['priority']?.name;
+  const issueStatus = data['fields']['status'].name;
+  const issueReporter = data['fields']['reporter'].displayName;
+  const issueAssignee = data['fields']['assignee'] ? data['fields']['assignee'].displayName : 'Unassigned';
+  const issueUrl = `${window.location.origin}/browse/${issueKey}`;
+
+  const result = format
+  .replaceAll('{key}', issueKey)
+  .replaceAll('{title}', issueTitle)
+  .replaceAll('{description}', issueDescription)
+  .replaceAll('{type}', issueType)
+  .replaceAll('{priority}', issuePriority)
+  .replaceAll('{status}', issueStatus)
+  .replaceAll('{reporter}', issueReporter)
+  .replaceAll('{assignee}', issueAssignee)
+  .replaceAll('{url}', issueUrl)
+  .replaceAll('{linkStart}',`<a href="${issueUrl}">`)
+  .replaceAll('{linkEnd}','</a>')
+
+  return result;
+}
+
 function getIssueDataAndWriteToClipboard(issueId)
 {
   const restCallForIssue = `${window.location.origin}/rest/api/2/issue/`;
@@ -31,46 +58,24 @@ function getIssueDataAndWriteToClipboard(issueId)
   fetch(`${restCallForIssue}${issueId}?${fields}`)
   .then((response) => response.json())
   .then((data) => {
-    const issueKey = data['key'];
-    const issueTitle = data['fields']['summary'];
-    const issueDescription = data['fields']['description'];
-    const issueType = data['fields']['issuetype'].name;
-    const issuePriority = data['fields']['priority']?.name;
-    const issueStatus = data['fields']['status'].name;
-    const issueReporter = data['fields']['reporter'].displayName;
-    const issueAssignee = data['fields']['assignee'] ? data['fields']['assignee'].displayName : 'Unassigned';
-    const issueUrl = `${window.location.origin}/browse/${issueId}`;
-
     storageGet('format').then(function (storageData) {
-      const format = storageData.format || '{key}: {title}';
-      const outputText = format
-        .replaceAll('{key}', issueKey)
-        .replaceAll('{title}', issueTitle)
-        .replaceAll('{description}', issueDescription)
-        .replaceAll('{type}', issueType)
-        .replaceAll('{priority}', issuePriority)
-        .replaceAll('{status}', issueStatus)
-        .replaceAll('{reporter}', issueReporter)
-        .replaceAll('{assignee}', issueAssignee)
-        .replaceAll('{url}', issueUrl)
-      
-      // .replaceAll('{linkStart}', `<a href="${issueUrl}">`)
-      // .replaceAll('{linkEnd}', '</a>')
-      
-      navigator.clipboard.writeText(outputText);
-      // check if both linkStart and linkEnd are present
-      // if so add the anchor tag
       // TODO: make '{linkStart}{key}{linkEnd}: {title}' the default if no format available
-      const outputHtml = `<a href="${issueUrl}">${issueKey}</a>: ${outputText}`
-
-      navigator.clipboard.write([
-        new ClipboardItem({
-          "text/plain": new Blob([outputText], { type: "text/plain" }),
-          "text/html": new Blob([outputHtml], { type: "text/html" })
-        })
-      ])
-      // navigator.clipboard.writeText(outputText);
-
+      const format = storageData.format || '{key}: {title}';
+      const textFormat = format.replaceAll('{linkStart}','').replaceAll('{linkEnd}','')
+      const outputText = formatData(data, textFormat)
+      
+      if(format.includes('{linkStart}') && format.includes('{linkEnd}'))
+      {
+        const outputHtml = formatData(data, format)
+        navigator.clipboard.write([
+          new ClipboardItem({
+            "text/plain": new Blob([outputText], { type: "text/plain" }),
+            "text/html": new Blob([outputHtml], { type: "text/html" })
+          })
+        ])
+      }
+      else
+        navigator.clipboard.writeText(outputText);
     });
   });
 }

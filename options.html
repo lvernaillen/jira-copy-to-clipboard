@@ -58,8 +58,43 @@
           <td class="token">{url}</td>
           <td>Issue URL</td>
         </tr>
+     <tr>
+          <td class="token">{linkStart}</td>
+          <td>Start of issue hyperlink</td>
+        </tr>
+        <tr>
+          <td class="token">{linkEnd}</td>
+          <td>End of issue hyperlink</td>
+        </tr>
       </tbody>
     </table>
+    <h2>Examples:</h2>
+    <table>
+      <thead>
+        <th>Example</th>
+        <th>Result</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token">{key}: {title}</td>
+          <td>PROJ-123: My first Jira issue</td>
+        </tr>
+        <tr>
+          <td class="token">{linkStart}{key}{linkEnd}: {title} ({status})</td>
+          <td><a href="https://yourJiraUrl/browse/PROJ-123">PROJ-123</a>: My first Jira issue (DONE)</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Tip:</h2>
+    <span>
+    Why not add a hyperlink using "{linkStart}" and "{linkEnd}" by default?<br>
+    It will copy your Jira info to the clipboard in text as well as HTML format.
+    <ul>
+      <li>If you use paste into a plain text editor or an application that only supports plain text, you'll get a plain text version of the content without the hyperlink.</li>
+      <li>If you use paste into an HTML-aware application (like a rich text editor or an email client), you’ll get the formatted HTML version with hyperlink to the issue. So you can quickly broswe to it.</li>
+    </ul>
+    See the examples above.
+    </span>
   </div>
   <script src="scripts/drag-and-drop.js"></script>
   <script src="scripts/storage-utils.js"></script>
