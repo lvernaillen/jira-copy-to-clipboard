@@ -25,9 +25,10 @@ function getIssueKey() {
 
 function getIssueDataAndWriteToClipboard(issueId)
 {
-  const restCallForIssue = `${window.location.origin}/rest/api/3/issue/`;
+  const restCallForIssue = `${window.location.origin}/rest/api/2/issue/`;
+  const fields = 'fields=key,summary,description,issuetype,priority,status,reporter,assignee'
 
-  fetch(`${restCallForIssue}${issueId}`)
+  fetch(`${restCallForIssue}${issueId}?${fields}`)
   .then((response) => response.json())
   .then((data) => {
     const issueKey = data['key'];
