@@ -11,9 +11,9 @@
   "action": {
     "default_icon": "icons/logo-32.png",
     "default_title": "Jira Copy to Clipboard",
-    "default_popup": "popup/info.html"
+    "default_popup": "popup.html"
   },
-  "options_page": "settings/settings.html",
+  "options_page": "options.html",
   "background": {
     "service_worker": "scripts/context-menu.js"
   },
@@ -29,7 +29,7 @@
       ],
       "run_at": "document_start",
       "css": [
-        "css/style.css"
+        "css/content.css"
       ]
     }
   ],
