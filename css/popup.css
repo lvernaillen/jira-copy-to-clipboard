@@ -1,45 +1,86 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-    display: flexbox;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background-color: rgb(13, 12, 12);
-    font-family: 'Courier New', Courier, monospace;
-  }
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 400px;
+  min-height: 100vh;
+  font-size: 100%;
+  flex-direction: column;
+}
 
-  .title {
-    color: white;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
+.content {
+  min-width: 400px;
 
-  .content-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    padding: 0 10px;
-  }
+  margin: 10px 10px;
+  padding: 10px 10px;
+}
 
-  .settings-button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-decoration: none;
-    margin-left: 10px;
-  }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  flex-wrap: nowrap;
+}
 
-  .github-button {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 16px;
-    background-color: #333;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-left: 10px;
-  }
+.logo {
+  height: 32px;
+  width: 32px;
+}
+
+.version {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.options-content,
+.github-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.options-content svg,
+.github-content img {
+  width: 24px;
+  height: 24px;
+  fill: #f3f3f3;
+}
+
+a {
+  text-decoration: none;
+  color: #f3f3f3;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #007bff;
+}
