@@ -17,13 +17,13 @@
     </h1>
 
     <div class="output">
-      <h2>Clipboard format:</h2>
+      <h2>Clipboard format</h2>
       <input type="text" id="format" value="">
       <button class="save-button" id="save">Save</button>
     </div>
 
     <div class="examples">
-      <h2>Placeholders:</h2>
+      <h2>Placeholders</h2>
       <p id="placeholder-info">Click on a placeholder in the table below to insert it in the clipboard format input
         above.<br>
         You can also drag and drop the placeholders into the input field.</p>
@@ -84,7 +84,7 @@
     </div>
 
     <div class="examples">
-      <h3>Examples:</h3>
+      <h3>Examples</h3>
       <table>
         <thead>
           <th>Example</th>
@@ -93,18 +93,18 @@
         <tbody>
           <tr>
             <td class="token">{key}: {title}</td>
-            <td>PROJ-123: My first Jira issue</td>
+            <td>PROJ-123: My Jira issue</td>
           </tr>
           <tr>
-            <td class="token">{linkStart}{key}{linkEnd}: {title} ({status})</td>
-            <td><a href="https://yourJiraUrl/browse/PROJ-123">PROJ-123</a>: My first Jira issue (DONE)</td>
+            <td class="token">{linkStart}{key}{linkEnd}: {title} - {status}</td>
+            <td><a href="https://yourJiraUrl/browse/PROJ-123">PROJ-123</a>: My Jira issue - DONE</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="tip">
-      <h2>Tip:</h2>
+      <h2>Tip</h2>
       <span>
         Copy your Jira info to the clipboard in text as well as HTML format<br>
         by using the tokens <span class="token">{linkStart}</span> and <span class="token">{linkEnd}</span>.<br>
