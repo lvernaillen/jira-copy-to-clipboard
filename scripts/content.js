@@ -68,7 +68,8 @@ function getIssueDataAndWriteToClipboard(issueId) {
         const outputText = formatData(data, textFormat);
 
         if (format.includes('{linkStart}') && format.includes('{linkEnd}')) {
-          const outputHtml = formatData(data, format);
+          // add an extra span to prevent newlines at the end when pasting in some applications (e.g. Google Chat, but not GMail)
+          const outputHtml = `<span>${formatData(data, format)}</span>`;
           navigator.clipboard.write([
             new ClipboardItem({
               'text/plain': new Blob([outputText], { type: 'text/plain' }),
