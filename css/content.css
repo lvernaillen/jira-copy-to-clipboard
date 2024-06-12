@@ -1,4 +1,4 @@
-  /* Base styles for the button */
+/* Base styles for the button */
 .button-span {
   margin-left: var(--ds-space-200, 16px);
 }
@@ -6,13 +6,13 @@
 .button-svg {
   width: 24px;
   height: 24px;
-  enable-background :new 0 0 24 24;
+  enable-background: new 0 0 24 24;
 }
 
 .breadcrumb-button-svg {
   width: 18px;
   height: 18px;
-  enable-background :new 0 0 24 24;
+  enable-background: new 0 0 24 24;
 }
 
 /* Styling for the injected button */
@@ -42,7 +42,10 @@
 /* Optional: Add hover effect */
 .breadcrumb-button:hover {
   opacity: 0.8; /* Slightly dim the button on hover */
-  background: var(--ds-background-neutral-subtle-hovered, rgba(9, 30, 66, 0.08));
+  background: var(
+    --ds-background-neutral-subtle-hovered,
+    rgba(9, 30, 66, 0.08)
+  );
 }
 
 .breadcrumb-svg-wrapper {
