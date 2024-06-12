@@ -16,101 +16,115 @@
       <span>Jira Copy to Clipboard</span>
     </h1>
 
+    <div class="buttons-section">
+      <h2>Buttons</h2>
+      <div class="button-checks">
+        <div>
+          <input type="checkbox" id="breadcrumb-checkbox" checked>
+          <label for="breadcrumb-checkbox" title="Small one above the issue title, behind the breadcrumb, always in sight">Breadcrumb button</label>
+        </div>
+        <div>
+          <input type="checkbox" id="quick-add-checkbox" checked>
+          <label for="quick-add-checkbox" title="Large one below the issue title near attachment and link buttons">Quick add button</label>
+        </div>
+      </div>
+    </div>
+
     <div class="output">
       <h2>Clipboard format</h2>
       <input type="text" id="format" value="" />
       <button class="save-button" id="save">Save</button>
     </div>
 
-    <div class="examples">
+    <div class="placeholders">
       <h2>Placeholders</h2>
       <p id="placeholder-info">
         Click or drag and drop a placeholder into the input field.
       </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Placeholder</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="token">{key}</td>
-            <td>Issue key (e.g., ABC-123)</td>
-          </tr>
-          <tr>
-            <td class="token">{title}</td>
-            <td>Issue title / summary</td>
-          </tr>
-          <tr>
-            <td class="token">{type}</td>
-            <td>Issue type (e.g., Bug, Task, Story)</td>
-          </tr>
-          <tr>
-            <td class="token">{priority}</td>
-            <td>Issue priority</td>
-          </tr>
-          <tr>
-            <td class="token">{status}</td>
-            <td>Issue status</td>
-          </tr>
-          <tr>
-            <td class="token">{description}</td>
-            <td>Issue description</td>
-          </tr>
-          <tr>
-            <td class="token">{reporter}</td>
-            <td>Issue reporter's display name</td>
-          </tr>
-          <tr>
-            <td class="token">{assignee}</td>
-            <td>Issue assignee's display name</td>
-          </tr>
-          <tr>
-            <td class="token">{url}</td>
-            <td>Issue URL</td>
-          </tr>
-          <tr>
-            <td class="token">{linkStart}</td>
-            <td>Start of issue hyperlink (*)</td>
-          </tr>
-          <tr>
-            <td class="token">{linkEnd}</td>
-            <td>End of issue hyperlink (*)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="examples-wrapper">
+        <div class="examples">
+          <table>
+            <thead>
+              <tr>
+                <th>Placeholder</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="token">{key}</td>
+                <td>Issue key (e.g., ABC-123)</td>
+              </tr>
+              <tr>
+                <td class="token">{title}</td>
+                <td>Issue title / summary</td>
+              </tr>
+              <tr>
+                <td class="token">{type}</td>
+                <td>Issue type (e.g., Bug, Task, Story)</td>
+              </tr>
+              <tr>
+                <td class="token">{priority}</td>
+                <td>Issue priority</td>
+              </tr>
+              <tr>
+                <td class="token">{status}</td>
+                <td>Issue status</td>
+              </tr>
+              <tr>
+                <td class="token">{description}</td>
+                <td>Issue description</td>
+              </tr>
+              <tr>
+                <td class="token">{reporter}</td>
+                <td>Issue reporter's display name</td>
+              </tr>
+              <tr>
+                <td class="token">{assignee}</td>
+                <td>Issue assignee's display name</td>
+              </tr>
+              <tr>
+                <td class="token">{url}</td>
+                <td>Issue URL</td>
+              </tr>
+              <tr>
+                <td class="token">{linkStart}</td>
+                <td>Start of issue hyperlink (*)</td>
+              </tr>
+              <tr>
+                <td class="token">{linkEnd}</td>
+                <td>End of issue hyperlink (*)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-    <div class="examples">
-      <table>
-        <thead>
-          <th>Example</th>
-          <th>Result</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="token">{key}: {title}</td>
-            <td>PROJ-123: My Jira issue</td>
-          </tr>
-          <tr>
-            <td class="token">
-              {linkStart}{key}{linkEnd}: {title} - {status}
-            </td>
-            <td>
-              <a href="https://yourJiraUrl/browse/PROJ-123">PROJ-123</a>: My
-              Jira issue - DONE
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="note">
-        (*) Using these tokens <span class="token">{linkStart}</span> and <span class="token">{linkEnd}</span> allows pasting with a hyperlink to the issue.<br>
-        In a HTML-aware application you'll see a link, in a plain text editor it will be plain text without a link.
+        <div class="examples">
+          <table>
+            <thead>
+              <th>Example</th>
+              <th>Result</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="token">{key}: {title}</td>
+                <td>PROJ-123: My Jira issue</td>
+              </tr>
+              <tr>
+                <td class="token">{linkStart}{key}{linkEnd}: {title} - {status}</td>
+                <td><a href="https://yourJiraUrl/browse/PROJ-123">PROJ-123</a>: My Jira issue - DONE</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="note">
+            (*) Using these tokens <span class="token">{linkStart}</span> and <span class="token">{linkEnd}</span> allows
+            pasting with a hyperlink to the issue.<br>
+            In a HTML-aware application you'll see a link, in a plain text editor it will be plain text without a link.
+          </div>
+        </div>
       </div>
     </div>
-
+  </div>
   <script src="scripts/drag-and-drop.js"></script>
   <script src="scripts/options.js"></script>
 </body>
