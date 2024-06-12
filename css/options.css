@@ -155,17 +155,7 @@ table {
   background-color: #747171;
 }
 
-.tip {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.tip ul {
-  list-style: disc inside;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  max-width: 700px;
-  word-wrap: break-word;
-  word-break: break-word;
+.note {
+  display: inline;
+  padding-top: 25px;
 }
