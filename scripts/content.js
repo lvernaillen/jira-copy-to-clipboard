@@ -5,7 +5,7 @@ function notify(message) {
 }
 
 function getIssueKey() {
-  const searchParam = "selectedIssue=";
+  const searchParam = 'selectedIssue=';
   let issueKey;
   let match;
 
@@ -23,30 +23,30 @@ function getIssueKey() {
 }
 
 function formatData(data, format) {
-  const issueKey = data["key"];
-  const issueTitle = data["fields"]["summary"];
-  const issueDescription = data["fields"]["description"];
-  const issueType = data["fields"]["issuetype"].name;
-  const issuePriority = data["fields"]["priority"]?.name;
-  const issueStatus = data["fields"]["status"].name;
-  const issueReporter = data["fields"]["reporter"].displayName;
-  const issueAssignee = data["fields"]["assignee"]
-    ? data["fields"]["assignee"].displayName
-    : "Unassigned";
+  const issueKey = data['key'];
+  const issueTitle = data['fields']['summary'];
+  const issueDescription = data['fields']['description'];
+  const issueType = data['fields']['issuetype'].name;
+  const issuePriority = data['fields']['priority']?.name;
+  const issueStatus = data['fields']['status'].name;
+  const issueReporter = data['fields']['reporter'].displayName;
+  const issueAssignee = data['fields']['assignee']
+    ? data['fields']['assignee'].displayName
+    : 'Unassigned';
   const issueUrl = `${window.location.origin}/browse/${issueKey}`;
 
   const result = format
-    .replaceAll("{key}", issueKey)
-    .replaceAll("{title}", issueTitle)
-    .replaceAll("{description}", issueDescription)
-    .replaceAll("{type}", issueType)
-    .replaceAll("{priority}", issuePriority)
-    .replaceAll("{status}", issueStatus)
-    .replaceAll("{reporter}", issueReporter)
-    .replaceAll("{assignee}", issueAssignee)
-    .replaceAll("{url}", issueUrl)
-    .replaceAll("{linkStart}", `<a href="${issueUrl}">`)
-    .replaceAll("{linkEnd}", "</a>");
+    .replaceAll('{key}', issueKey)
+    .replaceAll('{title}', issueTitle)
+    .replaceAll('{description}', issueDescription)
+    .replaceAll('{type}', issueType)
+    .replaceAll('{priority}', issuePriority)
+    .replaceAll('{status}', issueStatus)
+    .replaceAll('{reporter}', issueReporter)
+    .replaceAll('{assignee}', issueAssignee)
+    .replaceAll('{url}', issueUrl)
+    .replaceAll('{linkStart}', `<a href="${issueUrl}">`)
+    .replaceAll('{linkEnd}', '</a>');
 
   return result;
 }
@@ -54,25 +54,25 @@ function formatData(data, format) {
 function getIssueDataAndWriteToClipboard(issueId) {
   const restCallForIssue = `${window.location.origin}/rest/api/2/issue/`;
   const fields =
-    "fields=key,summary,description,issuetype,priority,status,reporter,assignee";
+    'fields=key,summary,description,issuetype,priority,status,reporter,assignee';
 
   fetch(`${restCallForIssue}${issueId}?${fields}`)
     .then((response) => response.json())
     .then((data) => {
-      chrome.storage.local.get("format").then(function (storageData) {
+      chrome.storage.local.get('format').then(function (storageData) {
         // TODO: make '{linkStart}{key}{linkEnd}: {title}' the default if no format available
-        const format = storageData.format || "{key}: {title}";
+        const format = storageData.format || '{key}: {title}';
         const textFormat = format
-          .replaceAll("{linkStart}", "")
-          .replaceAll("{linkEnd}", "");
+          .replaceAll('{linkStart}', '')
+          .replaceAll('{linkEnd}', '');
         const outputText = formatData(data, textFormat);
 
-        if (format.includes("{linkStart}") && format.includes("{linkEnd}")) {
+        if (format.includes('{linkStart}') && format.includes('{linkEnd}')) {
           const outputHtml = formatData(data, format);
           navigator.clipboard.write([
             new ClipboardItem({
-              "text/plain": new Blob([outputText], { type: "text/plain" }),
-              "text/html": new Blob([outputHtml], { type: "text/html" }),
+              'text/plain': new Blob([outputText], { type: 'text/plain' }),
+              'text/html': new Blob([outputHtml], { type: 'text/html' }),
             }),
           ]);
         } else navigator.clipboard.writeText(outputText);
@@ -91,54 +91,54 @@ function createCopyToClipboardSvg(cssClass) {
 
 function createBreadCrumbButton(neighbour) {
   // create the button
-  const button = document.createElement("button");
-  button.id = "copy-to-clipboard-breadcrumb-button";
-  button.className = "breadcrumb-button";
+  const button = document.createElement('button');
+  button.id = 'copy-to-clipboard-breadcrumb-button';
+  button.className = 'breadcrumb-button';
   button.innerHTML = `
     <div class="breadcrumb-svg-wrapper">
-      ${createCopyToClipboardSvg("breadcrumb-button-svg")}
+      ${createCopyToClipboardSvg('breadcrumb-button-svg')}
     </div>`;
 
   // insert the button right after the given neighbour
-  neighbour.insertAdjacentElement("afterend", button);
+  neighbour.insertAdjacentElement('afterend', button);
 
   button.onclick = function () {
     const issueId = getIssueKey();
     if (!!issueId) {
       getIssueDataAndWriteToClipboard(issueId);
     } else {
-      console.log("Error: No issue key found!");
+      console.log('Error: No issue key found!');
     }
   };
 }
 
 function createButton(parent) {
-  const buttonIconSpan = document.createElement("span");
-  buttonIconSpan.classList.add("css-1uc6u2g");
+  const buttonIconSpan = document.createElement('span');
+  buttonIconSpan.classList.add('css-1uc6u2g');
   buttonIconSpan.innerHTML = `
     <span class="_ca0qidpf _u5f3idpf _n3tdidpf _19bvidpf _18u0r5cr _2hwx1i6y">
       <span aria-hidden="true" class="css-1afrefi">
-        ${createCopyToClipboardSvg("button-svg")}
+        ${createCopyToClipboardSvg('button-svg')}
       </span>
     </span>`;
 
-  const buttonTextSpan = document.createElement("span");
-  buttonTextSpan.classList.add("css-178ag6o");
-  const buttonText = "Copy to clipboard";
+  const buttonTextSpan = document.createElement('span');
+  buttonTextSpan.classList.add('css-178ag6o');
+  const buttonText = 'Copy to clipboard';
   buttonTextSpan.textContent = buttonText;
 
-  const button = document.createElement("button");
-  button.id = "copy-to-clipboard-button";
-  button.classList.add("css-1luyhz2");
+  const button = document.createElement('button');
+  button.id = 'copy-to-clipboard-button';
+  button.classList.add('css-1luyhz2');
   button.appendChild(buttonIconSpan);
   button.appendChild(buttonTextSpan);
 
-  const whiteSpaceSpan = document.createElement("span");
-  whiteSpaceSpan.classList.add("button-span", "_2hwxu2gc");
+  const whiteSpaceSpan = document.createElement('span');
+  whiteSpaceSpan.classList.add('button-span', '_2hwxu2gc');
   whiteSpaceSpan.appendChild(button);
 
-  const div = document.createElement("div");
-  div.setAttribute("role", "presentation");
+  const div = document.createElement('div');
+  div.setAttribute('role', 'presentation');
   div.appendChild(whiteSpaceSpan);
 
   parent.appendChild(div);
@@ -147,9 +147,9 @@ function createButton(parent) {
     const issueId = getIssueKey();
     if (!!issueId) {
       getIssueDataAndWriteToClipboard(issueId);
-      buttonTextSpan.textContent = "Copied!";
+      buttonTextSpan.textContent = 'Copied!';
     } else {
-      buttonTextSpan.textContent = "Error: No issue key found!";
+      buttonTextSpan.textContent = 'Error: No issue key found!';
     }
     setTimeout(function () {
       buttonTextSpan.textContent = buttonText;
@@ -160,25 +160,26 @@ function createButton(parent) {
 // Jira often loads or modifies content dynamically as users navigate through the interface, especially within the same page context.
 // To handle such cases, it's more reliable to use a MutationObserver to monitor changes to the DOM and inject the button when the target element becomes available.
 var observer = new MutationObserver(function (mutations, me) {
-  var parent =
-    document.getElementsByClassName("gn0msi-0 cqZBrb")[0] ??
-    document.getElementsByClassName(
-      "_otyr1y44 _ca0q1y44 _u5f3idpf _n3td1y44 _19bvidpf _1e0c116y",
-    )[0] ??
-    document.getElementsByClassName("_otyr1b66 _1yt4swc3 _1e0c116y")[0];
 
   const jiraPermalinkButtonWrapper =
     document.getElementsByClassName(
-      "issue_view_permalink_button_wrapper",
+      'issue_view_permalink_button_wrapper'
     )?.[0] ?? null;
   if (jiraPermalinkButtonWrapper) {
-    if (!document.getElementById("copy-to-clipboard-breadcrumb-button")) {
+    if (!document.getElementById('copy-to-clipboard-breadcrumb-button')) {
       createBreadCrumbButton(jiraPermalinkButtonWrapper);
     }
   }
 
+  var parent =
+    document.getElementsByClassName('gn0msi-0 cqZBrb')[0] ??
+    document.getElementsByClassName(
+      '_otyr1y44 _ca0q1y44 _u5f3idpf _n3td1y44 _19bvidpf _1e0c116y'
+    )[0] ??
+    document.getElementsByClassName('_otyr1b66 _1yt4swc3 _1e0c116y')[0];
+
   if (parent) {
-    if (!document.getElementById("copy-to-clipboard-button")) {
+    if (!document.getElementById('copy-to-clipboard-button')) {
       createButton(parent);
     }
   }
