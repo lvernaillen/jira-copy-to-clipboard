@@ -36,6 +36,7 @@ function createContextMenu() {
 
 createContextMenu();
 
+// Add an event listener for clicks on the context menu items created by the extension
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === contextMenuId) {
     if (info.linkUrl.includes("/browse/")) {

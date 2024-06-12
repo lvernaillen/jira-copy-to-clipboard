@@ -24,7 +24,6 @@
         "*://*.atlassian.com/*"
       ],
       "js": [
-        "scripts/storage-utils.js",
         "scripts/content.js"
       ],
       "run_at": "document_start",

@@ -59,7 +59,7 @@ function getIssueDataAndWriteToClipboard(issueId) {
   fetch(`${restCallForIssue}${issueId}?${fields}`)
     .then((response) => response.json())
     .then((data) => {
-      storageGet("format").then(function (storageData) {
+      chrome.storage.local.get("format").then(function (storageData) {
         // TODO: make '{linkStart}{key}{linkEnd}: {title}' the default if no format available
         const format = storageData.format || "{key}: {title}";
         const textFormat = format
