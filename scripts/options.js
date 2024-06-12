@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener("click", function (ev) {
-    const saveButton = document.getElementById("save");
-    if (ev.target == saveButton) {
-      saveClipboardFormat(saveButton);
-    }
+  const saveButton = document.getElementById("save");
+  saveButton.addEventListener("click", function () {
+    saveClipboardFormat(saveButton);
   });
 
   loadClipboardFormat();
