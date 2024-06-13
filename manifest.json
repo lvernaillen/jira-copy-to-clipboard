@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Jira Copy to Clipboard",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Copy Jira issue information to clipboard in a customizable format.",
   "homepage_url": "https://github.com/lvernaillen/jira-copy-to-clipboard",
   "author": "https://github.com/lvernaillen/",
@@ -24,12 +24,13 @@
         "*://*.atlassian.com/*"
       ],
       "js": [
-        "scripts/storage-utils.js",
+        "scripts/data.js",
+        "scripts/buttons.js",
         "scripts/content.js"
       ],
       "run_at": "document_start",
       "css": [
-        "css/content.css"
+        "css/buttons.css"
       ]
     }
   ],

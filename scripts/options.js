@@ -1,49 +1,63 @@
 document.addEventListener('DOMContentLoaded', function () {
-  document.addEventListener('click', function (ev) {
-    const saveButton = document.getElementById('save');
-    if (ev.target == saveButton) {
-      saveClipboardFormat(saveButton);
-    }
-  });
-
-  loadClipboardFormat();
+  addInputEventHandlers();
+  loadInputStates();
 });
 
-function saveClipboardFormat(saveButton) {
-  const format = document.getElementById('format').value;
-  const saveText = saveButton.textContent;
-  storageSet({ format: format })
-  .then(function () {
-    saveButton.textContent = "Saved!";
-    saveButton.disabled = true
-    setTimeout(function () {
-      saveButton.textContent = saveText;
-      saveButton.disabled = false
-    }, 1000);
-  })
-  .catch((error) => {
-    console.error(`Save failed: ${error.message}`);
-    saveButton.textContent = "Save failed!";
-    saveButton.style.transition = 'none';
-    saveButton.classList.add('failed', 'no-hover');
-    saveButton.disabled = true;
-    setTimeout(function () {
-      saveButton.textContent = saveText;
-      saveButton.style.transition = '';
-      saveButton.classList.remove('failed', 'no-hover');
-      saveButton.disabled = false
-    }, 1000);
+function addInputEventHandlers() {
+  const saveButton = document.getElementById('save');
+  saveButton.addEventListener('click', function () {
+    saveClipboardFormat(saveButton);
+  });
+
+  document.getElementById('breadcrumb-checkbox').addEventListener('change', function () {
+    chrome.storage.local.set({ breadcrumbButton: this.checked });
+  });
+
+  document.getElementById('quick-add-checkbox').addEventListener('change', function () {
+    chrome.storage.local.set({ quickAddButton: this.checked });
   });
 }
 
-function loadClipboardFormat() {
-  storageGet('format').then(function (data) {
-    if (data.format) {
-      document.getElementById('format').value = data.format;
-    }
+async function saveClipboardFormat(saveButton) {
+  const format = document.getElementById('format').value;
+  const saveText = saveButton.textContent;
 
-    else {
-      document.getElementById('format').value = "{key}: {title}";
-    }
-  });
+  try {
+    await chrome.storage.local.set({ format: format });
+    
+    // Update the button text to indicate success
+    saveButton.textContent = 'Saved!';
+    saveButton.disabled = true;
+    
+    // Restore the button text after 1 second
+    setTimeout(() => {
+      saveButton.textContent = saveText;
+      saveButton.disabled = false;
+    }, 1000);
+    
+  } catch (error) {
+    // Log the error and update the button to indicate failure
+    console.error(`Save failed: ${error.message}`);
+    saveButton.textContent = 'Save failed!';
+    saveButton.style.transition = 'none';
+    saveButton.classList.add('failed', 'no-hover');
+    saveButton.disabled = true;
+    
+    // Restore the button text and style after 1 second
+    setTimeout(() => {
+      saveButton.textContent = saveText;
+      saveButton.style.transition = '';
+      saveButton.classList.remove('failed', 'no-hover');
+      saveButton.disabled = false;
+    }, 1000);
+  }
+}
+
+async function loadInputStates() {
+  const settings = await chrome.storage.local.get(['breadcrumbButton', 'quickAddButton', 'format']);
+  // let the button booleans default to true if not set
+  document.getElementById('breadcrumb-checkbox').checked = (settings.breadcrumbButton != null) ? settings.breadcrumbButton : true;
+  document.getElementById('quick-add-checkbox').checked = (settings.quickAddButton != null) ? settings.quickAddButton : true;
+    // TODO: make '{linkStart}{key}{linkEnd}: {title}' the default if no format available
+  document.getElementById('format').value = settings.format || '{key}: {title}';
 }

@@ -2,11 +2,9 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background-color: #10101a;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -67,24 +65,20 @@ h2 {
 }
 
 .output {
-  display: flex;
-  place-items: center;
-  flex-direction: column;
+  margin-top: 40px;
 }
 
 #format {
   font-size: 1.1em;
   letter-spacing: 0.15em;
-
-  width: 80%;
-  padding: 12px 20px;
-  background-color: #333;
+  width: 60%;
+  padding: 9px 20px;
+  background-color: #292932;
   color: white;
   box-sizing: border-box;
-  border: 3px solid #ccc;
+  border: 2px solid #424242;
   transition: 0.5s;
   -webkit-transition: 0.5s;
-
   margin: 8px 0;
   outline: none;
   box-sizing: border-box;
@@ -96,16 +90,15 @@ h2 {
 }
 
 .save-button {
-  background-color: #007bff;
+  background-color: #1a73e8;
   color: white;
   border: none;
-  padding: 10px 50px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
-  margin-bottom: 20px;
-  max-width: 250px;
+  height: 43px;
+  width: 120px;
 }
 
 .save-button:hover {
@@ -120,55 +113,68 @@ h2 {
   background-color: #ff6666;
 }
 
+.placeholders {
+  margin-top: 40px;
+}
+
+.examples-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
 .examples {
   display: flex;
   place-items: center;
   flex-direction: column;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 #placeholder-info {
-  margin-top: 0;
+  margin: 0;
 }
 
 table {
-  border: 1px dashed #888;
+  border: 1px ridge #424242;
   text-align: left;
 }
 
 .examples table td,
 .examples table th {
-  margin-right: 10px; /* Adjust the value as needed */
-  padding-right: 35px; /* Adjust the value as needed for extra spacing */
-  padding-left: 10px; /* Adjust the value as needed for extra spacing */
+  margin-right: 10px;
+  padding-right: 35px;
+  padding-left: 10px;
 }
 
 .examples a,
 .examples a:visited {
-  color: #007bff; /* Set visited link color to blue */
+  color: #1a73e8;
 }
 
 .token {
-  background-color: #333;
+  background-color: #292932;
   cursor: grab;
   padding: 2px 5px;
+  letter-spacing: 0.15em;
 }
 
 .token:hover {
   background-color: #747171;
 }
 
-.tip {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
+.note {
+  display: inline;
+  padding-top: 25px;
 }
 
-.tip ul {
-  list-style: disc inside;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  max-width: 700px;
-  word-wrap: break-word;
-  word-break: break-word;
+.buttons-section {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+}
+
+.button-checks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

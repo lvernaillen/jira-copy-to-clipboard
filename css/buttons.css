@@ -1,0 +1,55 @@
+/* Base styles for the button */
+.quickadd-button {
+  margin-left: var(--ds-space-200, 16px);
+}
+
+.quickadd-button-svg {
+  width: 24px;
+  height: 24px;
+  enable-background: new 0 0 24 24;
+}
+
+.breadcrumb-button-svg {
+  width: 18px;
+  height: 18px;
+  enable-background: new 0 0 24 24;
+}
+
+/* Styling for the injected button */
+.breadcrumb-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border-width: 0px;
+  border-radius: var(--ds-border-radius, 5px);
+  cursor: pointer;
+}
+
+/* Outline removal on click, but keep for tab focus */
+.breadcrumb-button:focus {
+  outline: none;
+}
+
+.breadcrumb-button:focus-visible {
+  outline: 2px solid #0078d4; /* Add a custom outline for keyboard focus */
+  outline-offset: 2px;
+}
+
+/* Optional: Add hover effect */
+.breadcrumb-button:hover {
+  opacity: 0.8; /* Slightly dim the button on hover */
+  background: var(
+    --ds-background-neutral-subtle-hovered,
+    rgba(9, 30, 66, 0.08)
+  );
+}
+
+.breadcrumb-svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
