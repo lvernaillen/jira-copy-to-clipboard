@@ -5,14 +5,15 @@ A simple Chrome extension that allows "Copy to clipboard" functionality in Jira 
 Forked from [Jira-Snippet](https://github.com/daemonLibra/Jira-Snippet).
 
 ## Current features
-- "Copy to clipboard" button on issue screen, issue popup screen and issue sidebar screen.  
-  Matching the Jira Cloud quick add button style.
-- "Copy to clipboard" option on hyperlink of any issue on the screen.  
+- "Copy to clipboard" button near the issue breadcrumb navigator.  
+  This is always visible even when scrolling down the issue details.
+- "Copy to clipboard" button below the issue title.  
+  A larger one, matching the Jira Cloud attachment and link buttons.
+- "Copy to clipboard" context option on hyperlink of any issue on the screen.  
   E.g., on the dashboard, linked issues, issues mentioned in comments, ...  
   No need to open the issue! Right-click the hyperlink and choose "Copy to clipboard" from the context menu.
-- "Copy to clipboard" button near the breadcrumb navigator.  
-  This is always visible even when scrolling down the issue details.
 - Configure which fields get copied to the clipboard and in what format.
+- Configure which buttons are shown.
 - Support copy as text and as HTML to the clipboard.  
   When pasting in HTML supported editors (chat, email, ...) you have a link to the issue.
 - Supports dark mode.

@@ -1,9 +1,9 @@
 /* Base styles for the button */
-.button-span {
+.quickadd-button {
   margin-left: var(--ds-space-200, 16px);
 }
 
-.button-svg {
+.quickadd-button-svg {
   width: 24px;
   height: 24px;
   enable-background: new 0 0 24 24;
