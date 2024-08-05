@@ -19,10 +19,21 @@ Forked from [Jira-Snippet](https://github.com/daemonLibra/Jira-Snippet).
 - Supports dark mode.
 
 ## Images
-- TODO
+- Button on side panel  
+![side-panel](https://github.com/user-attachments/assets/c894c42c-64e9-4e14-a76e-b7901883d7c3)
+  
+- Button on issue detail  
+![issue-detail](https://github.com/user-attachments/assets/ee462bf4-2027-498f-9f71-a16004cf7ab9)
+  
+- Button in right mouse click context menu  
+![mouse-button-context-menu](https://github.com/user-attachments/assets/49944568-a319-4e4f-9c5a-790b0b283952)
+  
+- Options  
+![options](https://github.com/user-attachments/assets/39144031-f96d-4bd2-9798-0b2e5e8b04af)
+
 
 ## Copy format examples
-- TODO
+- I recommend `{linkStart}{key}{linkEnd}: {title}`
 
 ## Installation
 
@@ -44,6 +55,8 @@ Note that enabling Developer Mode allows installing extensions not available on 
   - Navigate to the location where you unzipped the source code.
 - Disable the Developer Mode again after loading the extension.
   - This prevents that other unverified extensions get installed in case of phishing.
+- Set your preferred options  
+![extensions-button](https://github.com/user-attachments/assets/0d55a62c-4050-44c3-ac6d-b863aa6a639d)
 
 ### Method 2: Install from browser marketplace
 - TODO
